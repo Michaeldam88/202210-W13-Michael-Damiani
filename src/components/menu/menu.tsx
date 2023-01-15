@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
+import { PokemonContextProvider } from '../../context/pokemon.provider';
 
 export function Menu() {
     return (
         <nav className="menu">
             <ul>
                 <li>
-                    <Link to={'/home'}>{'Home'}</Link>
+                    <PokemonContextProvider>
+                        <Link to={'/home'}>{'Home'}</Link>
+                    </PokemonContextProvider>
                 </li>
 
                 <li>

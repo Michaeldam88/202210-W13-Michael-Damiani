@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
+import { PokemonContext } from '../../context/pokemon.context';
 
 export function Home() {
+    const { pokemons } = useContext(PokemonContext);
+
     return (
         <main>
             <div className="home-header">
