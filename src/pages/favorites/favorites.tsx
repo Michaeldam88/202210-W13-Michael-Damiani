@@ -1,10 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
-import { PokemonContext } from '../../context/pokemon.context';
+import { FavoritesContext } from '../../context/favorites.context';
+
 
 export function Favorites() {
 
-    const { pokemons } = useContext(PokemonContext);
+    const { favorites, handleLoad } = useContext(FavoritesContext);
+
+    useEffect(() => {
+        handleLoad();
+    }, [handleLoad]);
     
     return (
         <main>
@@ -13,7 +18,7 @@ export function Favorites() {
                 <h3>Guardados 0</h3>
             </div>
             <ul className="favorites__list">
-                {pokemons
+                {favorites
                     .filter((el) => el.isFavorites)
                     .map((element) => (
                         <PokemonElement key={element.id} pokemon={element} />

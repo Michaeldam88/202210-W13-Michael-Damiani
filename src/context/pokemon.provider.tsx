@@ -1,19 +1,20 @@
-import { useMemo } from "react";
-import { usePokemons } from "../hooks/use.pokemon";
-import { PokemonContext } from "./pokemon.context";
+import { useMemo } from 'react';
+import { usePokemons } from '../hooks/use.pokemon';
+import { PokemonContext } from './pokemon.context';
 
-export function PokemonContextProvider({ children }: { children: JSX.Element }) {
-    const { pokemons, handleLoad } =
-        usePokemons();
+export function PokemonContextProvider({
+    children,
+}: {
+    children: JSX.Element;
+}) {
+    const { pokemons, handleLoad } = usePokemons();
 
     const context = useMemo(
         () => ({
             pokemons,
-            handleLoad,            
-            
-            
+            handleLoad,
         }),
-        [pokemons,  handleLoad, ]
+        [pokemons, handleLoad]
     );
 
     return (
@@ -21,4 +22,4 @@ export function PokemonContextProvider({ children }: { children: JSX.Element }) 
             {children}
         </PokemonContext.Provider>
     );
-    }
+}

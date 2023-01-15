@@ -7,6 +7,7 @@ export interface PokemonContextStructure {
     handleLoad: () => Promise<void>;    
 }
 
+
 export const initialContext: PokemonContextStructure = {
     pokemons: [],
     handleLoad: async () => {},    

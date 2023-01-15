@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PokemonContextProvider } from '../../context/pokemon.provider';
+import { FavoritesContextProvider } from '../../context/favorites.provider';
 
 export function Menu() {
     return (
@@ -12,7 +13,9 @@ export function Menu() {
                 </li>
 
                 <li>
-                    <Link to={'/favorites'}>{'Favorites'}</Link>
+                    <FavoritesContextProvider>
+                        <Link to={'/favorites'}>{'Favorites'}</Link>
+                    </FavoritesContextProvider>
                 </li>
             </ul>
         </nav>

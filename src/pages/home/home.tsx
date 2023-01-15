@@ -1,9 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
 import { PokemonContext } from '../../context/pokemon.context';
 
 export function Home() {
-    const { pokemons } = useContext(PokemonContext);
+    const { pokemons, handleLoad } = useContext(PokemonContext);
+
+
+    useEffect(() => {
+        handleLoad();
+    }, [handleLoad]);
 
     return (
         <main>
