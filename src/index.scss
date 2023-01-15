@@ -92,7 +92,7 @@ main {
     display: block;
     margin: 0.8rem auto 0.3rem auto;
     background-color: transparent;
-    background-image: url(../assets/pokeball.png);
+    background-image: url(../public/assets/pokeball.png);
     background-position: center;
     background-size: cover;
     height: 3rem;
@@ -105,11 +105,11 @@ main {
 }
 
 .addFavorites:active {
-    background-image: url(../assets/pokeball-favorited.png);
+    background-image: url(../public/assets/pokeball-favorited.png);
 }
 
 .favorites {
-    background-image: url(../assets/pokeball-favorited.png);
+    background-image: url(../public/assets/pokeball-favorited.png);
 }
 
 .home-header {
@@ -198,7 +198,7 @@ main {
     display: block;
     margin: 0.8rem auto 0.3rem auto;
     background-color: transparent;
-    background-image: url(../assets/bin.png);
+    background-image: url(../public/assets/bin.png);
     background-position: center;
     background-size: cover;
     height: 2rem;
