@@ -1,28 +1,23 @@
-import { useEffect } from 'react';
-import { RobotElement } from '../../components/robotElement/robotElement';
-import { useRobots } from '../../hooks/use.robots';
+import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
 
 export function Favorites() {
-    const { handleLoad, robots, handleUpdate } = useRobots();
-
-    useEffect(() => {
-        handleLoad();
-    }, [handleLoad]);
-
     return (
-        <section className="favorites">
-            <h2>Favorites</h2>
+        <main>
+            <div className="home-header">
+                <h2>Pokemon Favoritos</h2>
+                <h3>Guardados 0</h3>
+            </div>
             <ul className="favorites__list">
-                {robots
-                    .filter((el) => el.isFavorited)
-                    .map((el) => (
-                        <RobotElement
-                            key={el.id}
-                            robot={el}
-                            handleUpdate={handleUpdate}
-                        />
+                {pokemons
+                    .filter((el) => el.isFavorites)
+                    .map((element) => (
+                        <PokemonElement key={element.id} pokemon={element} />
                     ))}
             </ul>
-        </section>
+            <div className="change-page">
+                <button id="previous">Previous</button>
+                <button id="next">Next</button>
+            </div>
+        </main>
     );
 }

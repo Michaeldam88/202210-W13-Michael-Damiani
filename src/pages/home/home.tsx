@@ -1,16 +1,23 @@
+import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
+
 export function Home() {
-    const totalRobots = JSON.parse(
-        sessionStorage.getItem('totalRobots') as string
-    );
-    
     return (
-        <section className="home">
-            <h2 className="home__title">Home</h2>
-            <p className="home__text" data-testid="totalRobots">
-                Total robots disponibles {totalRobots ? totalRobots : 0}
-            </p>
-        </section>
-        
+        <main>
+            <div className="home-header">
+                <h2>Pokemon List</h2>
+                <h3>Vistos X</h3>
+            </div>
+            <section className="pokemon-list">
+                <ul className="slot-items">
+                    {pokemons.map((element) => (
+                        <PokemonElement key={element.id} pokemon={element} />
+                    ))}
+                </ul>
+            </section>
+            <div className="change-page">
+                <button id="previous">Previous</button>
+                <button id="next">Next</button>
+            </div>
+        </main>
     );
 }
-

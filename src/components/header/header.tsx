@@ -1,5 +1,5 @@
 export function Header({ children }: { children: JSX.Element }) {
-    const title = 'Robots Factory';
+    const title = 'Pokedex';
 
     return (
         <header className="header">
