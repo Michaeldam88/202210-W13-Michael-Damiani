@@ -23,20 +23,22 @@ export function usePokemons(): UsePokemons {
 
     const handleLoad = useCallback(async () => {
         const pokemonsData = await pokemonApi.loadPokemons();
-        const data = await pokemonApi.getGeneralInfo();        
+        const data = await pokemonApi.getGeneralInfo();
         setTotPokemons(data.count);
         dispatch(pokemonLoadCreator(pokemonsData));
     }, [pokemonApi]);
 
-    const handleNext = useCallback(async () => {        
+    const handleNext = useCallback(async () => {
         const data = await pokemonApi.getGeneralInfo();
-        const pokemonsData = await pokemonApi.loadPokemons(data.next);        
+        const pokemonsData = await pokemonApi.loadPokemons(data.next);
+        pokemonApi.getGeneralInfo(data.next);
         dispatch(pokemonLoadCreator(pokemonsData));
     }, [pokemonApi]);
 
     const handlePrevious = useCallback(async () => {
         const data = await pokemonApi.getGeneralInfo();
-        const pokemonsData = await pokemonApi.loadPokemons(data.previous);        
+        const pokemonsData = await pokemonApi.loadPokemons(data.previous);
+        pokemonApi.getGeneralInfo(data.previous);
         dispatch(pokemonLoadCreator(pokemonsData));
     }, [pokemonApi]);
 

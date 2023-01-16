@@ -10,6 +10,7 @@ export class GetPokemons {
     }
 
     async getGeneralInfo(url = this.url) {
+        this.url= url;
         const resp = await (await fetch(url)).json();
         return resp;
     }
