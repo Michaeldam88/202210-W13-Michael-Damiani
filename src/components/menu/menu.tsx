@@ -5,11 +5,12 @@ export function Menu() {
         <nav className="menu">
             <ul>
                 <li>
-                    <Link to={'/home'}>{'Home'}</Link>
+                        <Link to={'/home'}>{'Home'}</Link>
                 </li>
 
                 <li>
-                    <Link to={'/favorites'}>{'Favorites'}</Link>
+                    
+                        <Link to={'/favorites'}>{'Favorites'}</Link>
                 </li>
             </ul>
         </nav>

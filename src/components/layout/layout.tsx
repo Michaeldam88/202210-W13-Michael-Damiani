@@ -7,7 +7,7 @@ export function Layout({ children }: { children: JSX.Element }) {
             <Header>
                 <Menu></Menu>
             </Header>
-            <main className='main-container'>{children}</main>
+            <main>{children}</main>
         </>
     );
 }
