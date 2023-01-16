@@ -7,18 +7,18 @@ export function PokemonContextProvider({
 }: {
     children: JSX.Element;
 }) {
-    const { pokemons, handleLoad, previousURl, nextUrl, totPokemons } =
+    const { pokemons, handleLoad, handleNext, handlePrevious, totPokemons } =
         usePokemons();
 
     const context = useMemo(
         () => ({
             pokemons,
             handleLoad,
-            previousURl,
-            nextUrl,
+            handleNext,
+            handlePrevious,
             totPokemons,
         }),
-        [pokemons, handleLoad, previousURl, nextUrl, totPokemons]
+        [pokemons, handleLoad, handleNext, handlePrevious, totPokemons]
     );
 
     return (

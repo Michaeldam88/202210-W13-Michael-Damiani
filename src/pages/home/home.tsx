@@ -3,7 +3,7 @@ import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
 import { PokemonContext } from '../../context/pokemon.context';
 
 export function Home() {
-    const { pokemons, handleLoad, totPokemons } = useContext(PokemonContext);
+    const { pokemons, handleLoad, totPokemons, handleNext, handlePrevious } = useContext(PokemonContext);
 
     useEffect(() => {
         handleLoad();
@@ -13,7 +13,7 @@ export function Home() {
         <main>
             <div className="home-header">
                 <h2>Pokemon List</h2>
-                <h3>Vistos {totPokemons}</h3>
+                <h3>Total {totPokemons}</h3>
             </div>
             <section className="pokemon-list">
                 <ul className="slot-items">
@@ -23,8 +23,12 @@ export function Home() {
                 </ul>
             </section>
             <div className="change-page">
-                <button id="previous">Previous</button>
-                <button id="next">Next</button>
+                <button id="previous" onClick={handlePrevious}>
+                    Previous
+                </button>
+                <button id="next" onClick={handleNext}>
+                    Next
+                </button>
             </div>
         </main>
     );

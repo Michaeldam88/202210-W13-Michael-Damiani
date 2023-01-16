@@ -5,18 +5,18 @@ import { PokemonStructure } from '../types/pokemonCard';
 export interface PokemonContextStructure {
     pokemons: Array<PokemonStructure>;
     handleLoad: () => Promise<void>;
-    previousURl: string;
-    nextUrl: string;
+    handlePrevious: () => Promise<void>;
+    handleNext: () => Promise<void>;
     totPokemons: number;
 }
 
 
 export const initialContext: PokemonContextStructure = {
-    previousURl:"",
-    nextUrl:"",
-    totPokemons:0,
+    handlePrevious: async () => {},
+    handleNext: async () => {},
+    totPokemons: 0,
     pokemons: [],
-    handleLoad: async () => {},    
+    handleLoad: async () => {},
 };
 
 export const PokemonContext = createContext(initialContext);

@@ -7,10 +7,11 @@ import { pokemonLoadCreator } from '../reducers/action.creators';
 
 export type UsePokemons = {
     pokemons: Array<PokemonStructure>;
-    previousURl: string;
-    nextUrl: string;
+
     totPokemons: number;
     handleLoad: () => Promise<void>;
+    handleNext: () => Promise<void>;
+    handlePrevious: () => Promise<void>;
 };
 
 export function usePokemons(): UsePokemons {
@@ -18,24 +19,32 @@ export function usePokemons(): UsePokemons {
     const initialState: Array<PokemonStructure> = [];
 
     const [pokemons, dispatch] = useReducer(pokemonReducer, initialState);
-    const [previousURl, setPreviousURl] = useState("");
-    const [nextUrl, setNextUrl] = useState("");
     const [totPokemons, setTotPokemons] = useState(0);
 
     const handleLoad = useCallback(async () => {
         const pokemonsData = await pokemonApi.loadPokemons();
-        const data = await pokemonApi.getGeneralInfo();
-        setPreviousURl(data.previous);
-        setNextUrl(data.next);
+        const data = await pokemonApi.getGeneralInfo();        
         setTotPokemons(data.count);
+        dispatch(pokemonLoadCreator(pokemonsData));
+    }, [pokemonApi]);
+
+    const handleNext = useCallback(async () => {        
+        const data = await pokemonApi.getGeneralInfo();
+        const pokemonsData = await pokemonApi.loadPokemons(data.next);        
+        dispatch(pokemonLoadCreator(pokemonsData));
+    }, [pokemonApi]);
+
+    const handlePrevious = useCallback(async () => {
+        const data = await pokemonApi.getGeneralInfo();
+        const pokemonsData = await pokemonApi.loadPokemons(data.previous);        
         dispatch(pokemonLoadCreator(pokemonsData));
     }, [pokemonApi]);
 
     return {
         pokemons,
         handleLoad,
-        previousURl,
-        nextUrl,
+        handleNext,
+        handlePrevious,
         totPokemons,
     };
 }
