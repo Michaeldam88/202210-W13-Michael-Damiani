@@ -1,5 +1,5 @@
 import { PokemonStructure } from '../types/pokemonCard';
-import { FavoritesAction} from './action.creators';
+import { FavoritesAction } from './action.creators';
 import { favoritesActionTypes } from './action.types';
 
 export function favoritesReducer(
@@ -8,7 +8,6 @@ export function favoritesReducer(
 ): Array<PokemonStructure> {
     switch (action.type) {
         case favoritesActionTypes.load:
-            console.log('load');
             const loadedFavorites = action.payload as Array<PokemonStructure>;
             return loadedFavorites;
 

@@ -7,8 +7,7 @@ export function pokemonReducer(
     action: PokemonAction
 ): Array<PokemonStructure> {
     switch (action.type) {
-        case pokemonActionTypes.load:
-            console.log("load")
+        case pokemonActionTypes.load:            
             const loadedPokemons = action.payload as Array<PokemonStructure>;
             return loadedPokemons;        
         default:

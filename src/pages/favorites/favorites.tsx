@@ -18,11 +18,7 @@ export function Favorites() {
                 {favorites.map((element) => (
                     <PokemonElement key={element.id} pokemon={element} />
                 ))}
-            </ul>
-            <div className="change-page">
-                <button id="previous">Previous</button>
-                <button id="next">Next</button>
-            </div>
+            </ul>            
         </main>
     );
 }

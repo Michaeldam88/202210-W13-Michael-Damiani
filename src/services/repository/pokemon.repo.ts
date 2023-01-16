@@ -5,7 +5,7 @@ import { Repository } from "../../types/repo";
 const invalidIdError = new Error('Invalid ID');
 
 export class PokemonRepo implements Repository<PokemonStructure> {
-    constructor(private url = 'http://localhost:3300/pokemons') {}
+    constructor(private url = 'http://localhost:3300/pokemons/') {}
 
     async load(): Promise<PokemonStructure[]> {
         const resp = await fetch(this.url);

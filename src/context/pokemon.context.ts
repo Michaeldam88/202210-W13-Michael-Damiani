@@ -4,11 +4,17 @@ import { PokemonStructure } from '../types/pokemonCard';
 
 export interface PokemonContextStructure {
     pokemons: Array<PokemonStructure>;
-    handleLoad: () => Promise<void>;    
+    handleLoad: () => Promise<void>;
+    previousURl: string;
+    nextUrl: string;
+    totPokemons: number;
 }
 
 
 export const initialContext: PokemonContextStructure = {
+    previousURl:"",
+    nextUrl:"",
+    totPokemons:0,
     pokemons: [],
     handleLoad: async () => {},    
 };
