@@ -1,9 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { PokemonDetail } from '../../components/pokemonDetail/pokemonDetail';
 import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
 import { FavoritesContext } from '../../context/favorites.context';
+import { PokemonStructure } from '../../types/pokemonCard';
 
 export function Favorites() {
     const { favorites, handleLoad } = useContext(FavoritesContext);
+
+    
+    const [pokemon, setPokemon] = useState<PokemonStructure | null>();
+
     useEffect(() => {
         handleLoad();
     }, [handleLoad]);
@@ -16,9 +22,23 @@ export function Favorites() {
             </div>
             <ul className="slot-items">
                 {favorites.map((element) => (
-                    <PokemonElement key={element.id} pokemon={element} />
+                    <PokemonElement
+                        openModal={(pokemon) => {
+                            setPokemon(pokemon);
+                        }}
+                        key={element.id}
+                        pokemon={element}
+                    />
                 ))}
-            </ul>            
+            </ul>
+            {pokemon ? (
+                <PokemonDetail
+                    closeModal={() => {
+                        setPokemon(null);
+                    }}
+                    pokemon={pokemon}
+                />
+            ) : null}
         </main>
     );
 }

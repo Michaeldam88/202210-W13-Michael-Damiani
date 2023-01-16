@@ -2,12 +2,14 @@ import { FavoritesContext } from '../../context/favorites.context';
 import { PokemonStructure } from '../../types/pokemonCard';
 import { useContext } from 'react';
 
-export function PokemonElement({ pokemon }: { pokemon: PokemonStructure }) {
+export function PokemonElement({
+    pokemon,
+    openModal,
+}: {
+    pokemon: PokemonStructure;
+    openModal: (pokemon: PokemonStructure) => void;
+}) {
     const { handleAdd, handleDelete } = useContext(FavoritesContext);
-
-    const openDetail = () => {
-        console.log('open');
-    };
 
     const addToFavorites = () => {
         pokemon.isFavorites = true;
@@ -24,7 +26,9 @@ export function PokemonElement({ pokemon }: { pokemon: PokemonStructure }) {
             <img
                 src={pokemon.sprites.other['official-artwork'].front_default}
                 alt={pokemon.name}
-                onClick={openDetail}
+                onClick={() => {
+                    openModal(pokemon);
+                }}
             />
             <p>nº {pokemon.id}</p>
             <h4>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h4>

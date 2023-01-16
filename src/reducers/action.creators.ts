@@ -21,7 +21,7 @@ export type FavoritesAction = {
 export const favoritesLoadCreator = (
     payload: Array<PokemonStructure>
 ): FavoritesAction => ({
-    type: favoritesActionTypes.load,
+    type: favoritesActionTypes.load, 
     payload,
 });
 

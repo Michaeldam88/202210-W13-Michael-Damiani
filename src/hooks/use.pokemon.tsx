@@ -7,7 +7,6 @@ import { pokemonLoadCreator } from '../reducers/action.creators';
 
 export type UsePokemons = {
     pokemons: Array<PokemonStructure>;
-
     totPokemons: number;
     handleLoad: () => Promise<void>;
     handleNext: () => Promise<void>;
