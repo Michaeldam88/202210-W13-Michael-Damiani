@@ -5,7 +5,6 @@ import { PokemonContext } from '../../context/pokemon.context';
 export function Home() {
     const { pokemons, handleLoad } = useContext(PokemonContext);
 
-
     useEffect(() => {
         handleLoad();
     }, [handleLoad]);

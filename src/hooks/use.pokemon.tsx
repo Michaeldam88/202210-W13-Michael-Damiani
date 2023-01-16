@@ -18,6 +18,7 @@ export function usePokemons(): UsePokemons {
 
     const handleLoad = useCallback(async () => {
         const data = await pokemonApi.load();
+        
         dispatch(pokemonLoadCreator(data));
     }, [pokemonApi]);
 
