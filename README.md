@@ -2,7 +2,5 @@
 
 # Challege Week 13
 
-Netlify: https://robotsgenerator.netlify.app/
-
-Sonar: https://sonarcloud.io/project/overview?id=Michaeldam88_202210-W12-Michael-Damiani
+Refactorizar un aplicación ya desarrollada con js vanilla y utilizar el frameworc react, contextos y flux.
 
