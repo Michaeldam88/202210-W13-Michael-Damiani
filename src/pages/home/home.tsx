@@ -1,13 +1,18 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { PokemonDetail } from '../../components/pokemonDetail/pokemonDetail';
 import { PokemonElement } from '../../components/pokemonElement/pokemonElement';
 import { PokemonContext } from '../../context/pokemon.context';
+import { PokemonStructure } from '../../types/pokemonCard';
 
 export function Home() {
-    const { pokemons, handleLoad, totPokemons, handleNext, handlePrevious } = useContext(PokemonContext);
+    const { pokemons, handleLoad, totPokemons, handleNext, handlePrevious } =
+        useContext(PokemonContext);
+
+    const [pokemon, setPokemon] = useState<PokemonStructure|null>();
 
     useEffect(() => {
         handleLoad();
-    }, [handleLoad]);
+    }, [handleLoad]);    
 
     return (
         <main>
@@ -18,7 +23,13 @@ export function Home() {
             <section className="pokemon-list">
                 <ul className="slot-items">
                     {pokemons.map((element) => (
-                        <PokemonElement key={element.id} pokemon={element} />
+                        <PokemonElement
+                            openModal={(pokemon) => {
+                                setPokemon(pokemon);
+                            }}
+                            key={element.id}
+                            pokemon={element}
+                        />
                     ))}
                 </ul>
             </section>
@@ -30,6 +41,14 @@ export function Home() {
                     Next
                 </button>
             </div>
+            {pokemon ? (
+                <PokemonDetail
+                    closeModal={() => {
+                        setPokemon(null);
+                    }}
+                    pokemon={pokemon}
+                />
+            ) : null}
         </main>
     );
 }

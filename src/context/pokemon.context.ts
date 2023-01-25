@@ -19,4 +19,4 @@ export const initialContext: PokemonContextStructure = {
     handleLoad: async () => {},
 };
 
-export const PokemonContext = createContext(initialContext);
+export const PokemonContext = createContext(initialContext); 
